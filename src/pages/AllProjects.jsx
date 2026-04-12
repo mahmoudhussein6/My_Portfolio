@@ -3,8 +3,10 @@ import { projects } from "../utils/data";
 import { FaGithub, FaExternalLinkAlt, FaArrowLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { useTransition } from "../components/common/TransitionContext";
 
 const AllProjects = () => {
+    const { transitionTo } = useTransition();
     // Scroll to top on mount
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -22,13 +24,14 @@ const AllProjects = () => {
                 {/* Header Section */}
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-20">
                     <div>
-                        <Link 
-                            to="/" 
+                        <button 
+                            onClick={() => transitionTo("/")}
                             className="inline-flex items-center gap-2 text-purple-400 font-bold uppercase tracking-widest text-xs mb-6 hover:text-white transition-colors group"
                         >
                             <FaArrowLeft className="group-hover:-translate-x-1 transition-transform" />
                             Back to Portfolio
-                        </Link>
+                        </button>
+
                         <h1 className="text-5xl sm:text-8xl font-black text-white leading-none tracking-tighter">
                             Full <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">Portfolio</span>
                         </h1>

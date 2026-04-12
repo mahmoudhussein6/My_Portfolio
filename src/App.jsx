@@ -2,6 +2,7 @@ import { useState, lazy, Suspense } from "react";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Navbar from "./components/layout/Navbar";
 import Loader from "./components/common/Loader";
+import { TransitionProvider } from "./components/common/TransitionContext";
 
 const Home = lazy(() => import("./pages/Home"));
 const AllProjects = lazy(() => import("./pages/AllProjects"));
@@ -19,25 +20,28 @@ const App = () => {
       {isLoading ? (
         <Loader finishLoading={() => setIsLoading(false)} />
       ) : (
-        <div className="relative z-0 bg-slate-900 min-h-screen selection:bg-purple-500/30 selection:text-purple-200 overflow-hidden">
-          <CustomCursor />
-          <ScrollProgress />
-          <FloatingElements />
-          <ScrollToTop />
-          <WhatsAppFloating />
-          <Navbar />
-          <main>
-            <Suspense fallback={<div className="h-screen bg-slate-900" />}>
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/projects" element={<AllProjects />} />
-              </Routes>
-            </Suspense>
-          </main>
-        </div>
+        <TransitionProvider>
+          <div className="relative z-0 bg-slate-900 min-h-screen selection:bg-purple-500/30 selection:text-purple-200 overflow-hidden">
+            <CustomCursor />
+            <ScrollProgress />
+            <FloatingElements />
+            <ScrollToTop />
+            <WhatsAppFloating />
+            <Navbar />
+            <main>
+              <Suspense fallback={<div className="h-screen bg-slate-900" />}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/projects" element={<AllProjects />} />
+                </Routes>
+              </Suspense>
+            </main>
+          </div>
+        </TransitionProvider>
       )}
     </BrowserRouter>
   );
 };
 
 export default App;
+

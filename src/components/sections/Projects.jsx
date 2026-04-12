@@ -3,9 +3,10 @@ import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { projects } from "../../utils/data";
 import SectionWrapper from "../common/SectionWrapper";
 import { FaGithub, FaExternalLinkAlt, FaCode } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useTransition } from "../common/TransitionContext";
 
 const ProjectCard = memo(({ title, description, tags, image, source_code_link, live_link, index }) => {
+
     const cardRef = useRef(null);
     
     // ... (rest of ProjectCard component same)
@@ -129,6 +130,8 @@ ProjectCard.displayName = "ProjectCard";
 const Projects = () => {
     const containerRef = useRef(null);
     const featuredProjects = useMemo(() => projects.slice(0, 4), []);
+    const { transitionTo } = useTransition();
+
 
     return (
         <div ref={containerRef} className="py-24 relative overflow-visible min-h-screen">
@@ -164,7 +167,7 @@ const Projects = () => {
                     ))}
                     
                     {/* View More Card */}
-                    <Link to="/projects" className="h-full">
+                    <div className="h-full cursor-pointer" onClick={() => transitionTo("/projects")}>
                         <motion.div
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
@@ -180,13 +183,14 @@ const Projects = () => {
                                 </div>
                             </div>
                         </motion.div>
-                    </Link>
+                    </div>
+
                 </div>
 
                 {/* Bottom CTA Button */}
                 <div className="flex justify-center mt-10">
-                    <Link to="/projects">
                         <motion.button
+                            onClick={() => transitionTo("/projects")}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
@@ -197,8 +201,8 @@ const Projects = () => {
                             <span>Explore Full Portfolio</span>
                             <FaExternalLinkAlt className="text-sm text-purple-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                         </motion.button>
-                    </Link>
                 </div>
+
             </div>
 
         </div>

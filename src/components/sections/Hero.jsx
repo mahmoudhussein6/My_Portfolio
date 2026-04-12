@@ -6,9 +6,13 @@ import { HERO_CONTENT } from "../../constants";
 import { FaDownload, FaArrowRight, FaReact, FaAngular, FaJs, FaCode, FaPalette } from "react-icons/fa";
 import { SiNextdotjs, SiFlutter, SiFirebase, SiTypescript, SiSupabase, SiFastapi } from "react-icons/si";
 import { Link } from "react-router-dom";
+import { useTransition } from "../common/TransitionContext";
 
 const Hero = () => {
     const containerRef = useRef(null);
+    const { transitionTo } = useTransition();
+// ... (rest as before until button)
+
 
     // GSAP animations for initial entrance
     useGSAP(() => {
@@ -160,16 +164,16 @@ const Hero = () => {
                     </div>
 
                     <div className="mt-10 flex flex-wrap items-center justify-center lg:justify-start gap-5">
-                        <Link to="/projects">
-                            <motion.button
-                                whileHover={{ scale: 1.05 }}
-                                whileTap={{ scale: 0.95 }}
-                                className="hero-btns px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-lg shadow-xl shadow-purple-500/20 flex items-center gap-3 group transition-all"
-                            >
-                                View Projects
-                                <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
-                            </motion.button>
-                        </Link>
+                        <motion.button
+                            onClick={() => transitionTo("/projects")}
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            className="hero-btns px-8 py-4 rounded-2xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-bold text-lg shadow-xl shadow-purple-500/20 flex items-center gap-3 group transition-all"
+                        >
+                            View Projects
+                            <FaArrowRight className="group-hover:translate-x-1 transition-transform" />
+                        </motion.button>
+
 
                         <motion.a
                             href="https://drive.google.com/file/d/1zcLz1J0v168kVXoCX6b9sVkhLnJMTtu0/view?usp=drive_link"
