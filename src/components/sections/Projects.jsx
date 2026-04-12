@@ -8,7 +8,7 @@ import { useTransition } from "../common/TransitionContext";
 const ProjectCard = memo(({ title, description, tags, image, source_code_link, live_link, index }) => {
 
     const cardRef = useRef(null);
-    
+
     // ... (rest of ProjectCard component same)
     const x = useMotionValue(0);
     const y = useMotionValue(0);
@@ -64,7 +64,7 @@ const ProjectCard = memo(({ title, description, tags, image, source_code_link, l
                 {/* Content Wrapper */}
                 <div className="p-2 flex flex-col flex-1">
                     {/* Visual Area */}
-                    <div className="relative rounded-[24px] overflow-hidden aspect-[16/10] bg-slate-900 border border-white/5">
+                    <div className="relative rounded-[24px] overflow-hidden aspect-[16/11] sm:aspect-[16/10] bg-slate-900 border border-white/5">
                         <img
                             src={image}
                             alt={title}
@@ -90,32 +90,33 @@ const ProjectCard = memo(({ title, description, tags, image, source_code_link, l
                     </div>
 
                     {/* Meta Info */}
-                    <div className="p-6 flex flex-col flex-1">
+                    <div className="p-6 sm:p-8 flex flex-col flex-1">
                         <div className="flex items-center gap-2 mb-4">
                             <FaCode className="text-purple-500" />
-                            <span className="text-xs font-bold text-slate-500 uppercase tracking-widest">Stack.Intelligence</span>
+                            <span className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-widest">Stack.Intelligence</span>
                         </div>
 
-                        <h3 className="text-3xl font-black text-white mb-2 leading-none group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-500">
+                        <h3 className="text-2xl sm:text-4xl font-black text-white mb-3 sm:mb-4 leading-tight group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-purple-400 group-hover:to-pink-400 transition-all duration-500">
                             {title}
                         </h3>
 
-                        <p className="text-slate-400 text-sm leading-relaxed mb-6 flex-1 italic">
+                        <p className="text-slate-400 text-sm sm:text-lg leading-relaxed mb-6 sm:mb-8 flex-1 italic">
                             {description}
                         </p>
 
                         {/* Staggered Tech Pills */}
-                        <div className="flex flex-wrap gap-2 pt-4 border-t border-white/5">
+                        <div className="flex flex-wrap gap-2.5 pt-6 border-t border-white/5">
                             {tags.map((tag) => (
                                 <span
                                     key={tag}
-                                    className="px-3 py-1.5 rounded-lg bg-white/[0.02] border border-white/[0.05] text-[10px] font-bold text-slate-400 hover:text-white hover:bg-purple-500/20 hover:border-purple-500/40 transition-all cursor-default"
+                                    className="px-4 py-2 rounded-xl bg-white/[0.02] border border-white/[0.05] text-xs font-bold text-slate-400 hover:text-white hover:bg-purple-500/20 hover:border-purple-500/40 transition-all cursor-default"
                                 >
                                     {tag}
                                 </span>
                             ))}
                         </div>
                     </div>
+
                 </div>
 
                 {/* Animated Inner Shine */}
@@ -153,7 +154,7 @@ const Projects = () => {
                                 Selected <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-indigo-500">Creations</span>
                             </h2>
                         </div>
-                        
+
                         <p className="text-slate-400 text-lg max-w-xl leading-relaxed lg:text-right font-medium italic">
                             A curated selection of my most impactful digital solutions. Swipe to explore the highlights.
                         </p>
@@ -161,25 +162,25 @@ const Projects = () => {
                 </div>
 
                 {/* Responsive Projects Grid */}
-                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-8">
+                <div className="max-w-7xl mx-auto px-0 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-12">
                     {featuredProjects.map((project, index) => (
                         <ProjectCard key={index} index={index} {...project} />
                     ))}
-                    
+
                     {/* View More Card */}
-                    <div className="h-full cursor-pointer" onClick={() => transitionTo("/projects")}>
+                    <div className="h-full cursor-pointer lg:col-span-2 xl:col-span-1" onClick={() => transitionTo("/projects")}>
                         <motion.div
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="h-full min-h-[400px] group relative p-[1px] rounded-[32px] bg-gradient-to-br from-purple-500/20 to-indigo-600/20 hover:from-purple-500 hover:to-indigo-600 shadow-2xl transition-all duration-500"
+                            className="h-full min-h-[500px] group relative p-[1px] rounded-[32px] bg-gradient-to-br from-purple-500/20 to-indigo-600/20 hover:from-purple-500 hover:to-indigo-600 shadow-2xl transition-all duration-500"
                         >
-                            <div className="bg-slate-950/90 h-full backdrop-blur-xl px-8 py-16 rounded-[31px] flex flex-col items-center justify-center gap-6 border border-white/10 group-hover:bg-transparent transition-all duration-500">
-                                <div className="w-20 h-20 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
-                                    <FaCode className="text-5xl text-purple-400 group-hover:text-white transition-colors" />
+                            <div className="bg-slate-950/90 h-full backdrop-blur-xl px-10 py-24 rounded-[31px] flex flex-col items-center justify-center gap-8 border border-white/10 group-hover:bg-transparent transition-all duration-500">
+                                <div className="w-24 h-24 rounded-3xl bg-white/5 flex items-center justify-center border border-white/10 group-hover:bg-white/10 transition-colors">
+                                    <FaCode className="text-6xl text-purple-400 group-hover:text-white transition-colors" />
                                 </div>
                                 <div className="text-center">
-                                    <p className="text-white font-black text-3xl uppercase tracking-tighter">Explore More</p>
-                                    <p className="text-slate-500 font-bold uppercase tracking-widest mt-2 group-hover:text-purple-200 transition-colors italic">Full Project Gallery</p>
+                                    <p className="text-white font-black text-4xl uppercase tracking-tighter">Explore More</p>
+                                    <p className="text-slate-400 font-bold uppercase tracking-widest mt-4 group-hover:text-purple-200 transition-colors italic">Full Project Gallery</p>
                                 </div>
                             </div>
                         </motion.div>
@@ -189,18 +190,18 @@ const Projects = () => {
 
                 {/* Bottom CTA Button */}
                 <div className="flex justify-center mt-10">
-                        <motion.button
-                            onClick={() => transitionTo("/projects")}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            className="px-10 py-4 rounded-2xl bg-slate-900 border border-white/10 hover:border-purple-500/50 text-white font-bold flex items-center gap-4 transition-all shadow-xl backdrop-blur-md group"
-                        >
-                            <span>Explore Full Portfolio</span>
-                            <FaExternalLinkAlt className="text-sm text-purple-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                        </motion.button>
+                    <motion.button
+                        onClick={() => transitionTo("/projects")}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-10 py-4 rounded-2xl bg-slate-900 border border-white/10 hover:border-purple-500/50 text-white font-bold flex items-center gap-4 transition-all shadow-xl backdrop-blur-md group"
+                    >
+                        <span>Explore Full Portfolio</span>
+                        <FaExternalLinkAlt className="text-sm text-purple-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                    </motion.button>
                 </div>
 
             </div>
