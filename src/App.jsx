@@ -6,6 +6,7 @@ import { TransitionProvider } from "./components/common/TransitionContext";
 
 const Home = lazy(() => import("./pages/Home"));
 const AllProjects = lazy(() => import("./pages/AllProjects"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 import CustomCursor from "./components/common/CustomCursor";
 import ScrollProgress from "./components/common/ScrollProgress";
 import FloatingElements from "./components/common/FloatingElements";
@@ -33,6 +34,7 @@ const App = () => {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/projects" element={<AllProjects />} />
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
               </Suspense>
             </main>
