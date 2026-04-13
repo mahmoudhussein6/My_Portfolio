@@ -2,7 +2,7 @@ import { useRef, useState, memo } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "framer-motion";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
-import { HERO_CONTENT } from "../../constants";
+import { HERO_CONTENT } from "../../utils/data";
 import { FaDownload, FaArrowRight, FaReact, FaAngular, FaJs, FaCode, FaPalette } from "react-icons/fa";
 import { SiNextdotjs, SiFlutter, SiFirebase, SiTypescript, SiSupabase, SiFastapi } from "react-icons/si";
 import { Link } from "react-router-dom";
@@ -11,9 +11,7 @@ import { useTransition } from "../common/TransitionContext";
 const Hero = () => {
     const containerRef = useRef(null);
     const { transitionTo } = useTransition();
-// ... (rest as before until button)
-
-
+    
     // GSAP animations for initial entrance
     useGSAP(() => {
         const tl = gsap.timeline({ defaults: { ease: "expo.out" } });
@@ -114,10 +112,33 @@ const Hero = () => {
                 }}
             />
 
-            {/* Background Decorative Elements */}
-            <div className="absolute top-1/4 -left-20 w-96 h-96 bg-purple-600/10 rounded-full blur-[120px] animate-pulse" />
-            <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-blue-600/10 rounded-full blur-[100px] animate-pulse delay-1000" />
-
+            {/* Background Decorative Blobs */}
+            <motion.div 
+                animate={{ 
+                    scale: [1, 1.2, 1],
+                    x: [0, 50, 0],
+                    y: [0, 30, 0],
+                }}
+                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                className="absolute top-1/4 -left-20 w-96 h-96 bg-purple-600/20 rounded-full blur-[120px] pointer-events-none"
+            />
+            <motion.div 
+                animate={{ 
+                    scale: [1.2, 1, 1.2],
+                    x: [0, -50, 0],
+                    y: [0, -40, 0],
+                }}
+                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                className="absolute bottom-1/4 -right-20 w-80 h-80 bg-blue-600/20 rounded-full blur-[100px] pointer-events-none"
+            />
+            <motion.div 
+                animate={{ 
+                    scale: [1, 1.5, 1],
+                    x: [0, 100, 0],
+                }}
+                transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
+                className="absolute top-[10%] right-[20%] w-64 h-64 bg-indigo-500/10 rounded-full blur-[80px] pointer-events-none"
+            />
             {/* Grid Pattern with Embedded Noise */}
             <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0" 
                  style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}
@@ -205,21 +226,40 @@ const Hero = () => {
                     </div>
                 </div>
 
-                {/* Visual Side */}
-                <div className="flex-1 w-full max-w-xl relative">
+                <div className="flex-1 w-full max-w-xl relative group/hero-img">
+                    {/* Animated Halo Background */}
+                    <div className="absolute -inset-4 bg-gradient-to-r from-purple-500/20 to-indigo-500/20 rounded-[50px] blur-2xl opacity-0 group-hover/hero-img:opacity-100 transition-opacity duration-1000 animate-pulse" />
+                    <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 via-indigo-500 to-purple-500 rounded-[42px] opacity-20 group-hover/hero-img:opacity-40 transition-opacity duration-1000 blur-sm" />
+
                     <motion.div
                         onMouseMove={onTiltMove}
                         onMouseLeave={resetTilt}
                         style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
-                        className="hero-img-box relative z-10 w-full aspect-square sm:aspect-auto sm:h-[500px] rounded-[40px] overflow-hidden border-2 border-white/5 bg-slate-900/40 backdrop-blur-sm group shadow-2xl shadow-purple-500/10"
+                        animate={{
+                            y: [0, -15, 0],
+                            rotate: [0, 0.5, 0],
+                        }}
+                        transition={{
+                            duration: 8,
+                            repeat: Infinity,
+                            ease: "easeInOut"
+                        }}
+                        className="hero-img-box relative z-10 w-full aspect-square sm:aspect-auto sm:h-[500px] rounded-[40px] overflow-hidden bg-slate-900/40 backdrop-blur-sm"
                     >
                         {/* Dynamic Background inside Image Container */}
-                        <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                        <div className="absolute inset-0 bg-gradient-to-tr from-purple-900/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                        
+                        {/* Moving Scanline Effect */}
+                        <motion.div 
+                            animate={{ y: ["-100%", "200%"] }}
+                            transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
+                            className="absolute inset-0 bg-gradient-to-b from-transparent via-purple-500/10 to-transparent pointer-events-none"
+                        />
 
                         <img
                             src={HERO_CONTENT.image}
                             alt="Mahmoud"
-                            className="w-full h-full object-cover object-top grayscale-[20%] group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700"
+                            className="w-full h-full object-cover object-top grayscale-[20%] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out"
                         />
 
                         {/* Floating Cards (Glassmorphism) - Stacked at the bottom */}

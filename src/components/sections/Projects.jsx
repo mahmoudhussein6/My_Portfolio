@@ -1,6 +1,6 @@
 import { useRef, memo, useMemo } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { projects } from "../../utils/data";
+import { featuredProjects } from "../../utils/data";
 import SectionWrapper from "../common/SectionWrapper";
 import { FaGithub, FaExternalLinkAlt, FaCode } from "react-icons/fa";
 import { useTransition } from "../common/TransitionContext";
@@ -130,7 +130,7 @@ ProjectCard.displayName = "ProjectCard";
 
 const Projects = () => {
     const containerRef = useRef(null);
-    const featuredProjects = useMemo(() => projects.slice(0, 4), []);
+    const featured = useMemo(() => featuredProjects, []);
     const { transitionTo } = useTransition();
 
 
@@ -163,7 +163,7 @@ const Projects = () => {
 
                 {/* Responsive Projects Grid */}
                 <div className="max-w-7xl mx-auto px-0 sm:px-6 grid grid-cols-1 lg:grid-cols-2 gap-10 xl:gap-12">
-                    {featuredProjects.map((project, index) => (
+                    {featured.map((project, index) => (
                         <ProjectCard key={index} index={index} {...project} />
                     ))}
 

@@ -1,6 +1,7 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import SectionWrapper from "../common/SectionWrapper";
+import { CONTACT } from "../../utils/data";
 import { FaPaperPlane, FaUser, FaEnvelope, FaMessage } from "react-icons/fa6";
 
 const Contact = () => {
@@ -27,7 +28,7 @@ const Contact = () => {
             const body = encodeURIComponent(`Name: ${form.name}\nEmail: ${form.email}\n\nMessage:\n${form.message}`);
             
             // Direct mailto link - opens in a separate action
-            window.open(`mailto:kottpkamal@gmail.com?subject=${subject}&body=${body}`, "_blank");
+            window.open(`mailto:${CONTACT.email}?subject=${subject}&body=${body}`, "_blank");
             
             setStatus("success");
             setForm({ name: "", email: "", message: "" });

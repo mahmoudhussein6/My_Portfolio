@@ -1,6 +1,6 @@
 import { motion, useMotionTemplate, useMotionValue, useSpring, useTransform } from "framer-motion";
 import SectionWrapper from "../common/SectionWrapper";
-import { ABOUT_TEXT } from "../../constants";
+import { ABOUT_TEXT } from "../../utils/data";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -139,8 +139,9 @@ const About = () => {
                             Overview
                         </span>
                     </h2>
-
-                   
+                    <p className="mt-4 text-slate-400 text-[17px] max-w-3xl leading-[30px] font-medium italic">
+                        {ABOUT_TEXT.intro}
+                    </p>
                 </div>
 
                 <div className="mt-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">

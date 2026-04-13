@@ -1,27 +1,35 @@
+import { lazy, Suspense } from "react";
 import Hero from "../components/sections/Hero";
-import Summary from "../components/sections/Summary";
-import About from "../components/sections/About";
-import Experience from "../components/sections/Experience";
-import Skills from "../components/sections/Skills";
-import Projects from "../components/sections/Projects";
-import Contact from "../components/sections/Contact";
-import Footer from "../components/layout/Footer";
+
+const Summary = lazy(() => import("../components/sections/Summary"));
+const About = lazy(() => import("../components/sections/About"));
+const Services = lazy(() => import("../components/sections/Services"));
+const Experience = lazy(() => import("../components/sections/Experience"));
+const Certifications = lazy(() => import("../components/sections/Certifications"));
+const Skills = lazy(() => import("../components/sections/Skills"));
+const Projects = lazy(() => import("../components/sections/Projects"));
+const Contact = lazy(() => import("../components/sections/Contact"));
+const Footer = lazy(() => import("../components/layout/Footer"));
 
 const Home = () => {
   return (
     <div className="relative z-0">
-      <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
+      <div className="relative">
         <Hero />
       </div>
-      <Summary />
-      <About />
-      <Experience />
-      <Skills />
-      <Projects />
-      <div className="relative z-0">
-        <Contact />
-        <Footer />
-      </div>
+      <Suspense fallback={<div className="h-20" />}>
+        <Summary />
+        <About />
+        <Services />
+        <Experience />
+        <Skills />
+        <Projects />
+        <Certifications />
+        <div className="relative z-0">
+          <Contact />
+          <Footer />
+        </div>
+      </Suspense>
     </div>
   );
 };

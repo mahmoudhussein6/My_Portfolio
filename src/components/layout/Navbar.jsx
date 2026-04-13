@@ -82,13 +82,13 @@ const Navbar = () => {
                     </Link>
 
                     {/* Desktop Links */}
-                    <div className="hidden sm:flex items-center gap-10">
-                        <ul className="list-none flex flex-row gap-10">
+                    <div className="hidden lg:flex items-center gap-6">
+                        <ul className="list-none flex flex-row gap-5 xl:gap-8">
                             {navLinks.map((link) => (
                                 <li
                                     key={link.id}
                                     className={`nav-item ${active === link.title ? "text-purple-400" : "text-slate-400"
-                                        } hover:text-white text-[16px] font-semibold cursor-pointer transition-colors uppercase tracking-wider`}
+                                        } hover:text-white text-[13px] xl:text-[15px] font-semibold cursor-pointer transition-colors uppercase tracking-wider`}
                                     onClick={() => setActive(link.title)}
                                 >
                                     <a href={isHome ? `#${link.id}` : `/#${link.id}`}>{link.title}</a>
@@ -97,21 +97,21 @@ const Navbar = () => {
                         </ul>
 
                         {/* Desktop Socials */}
-                        <div className="flex items-center gap-5 pl-10 border-l border-white/10">
+                        <div className="flex items-center gap-4 pl-6 border-l border-white/10">
                             <a href="https://github.com/mahmoudhussein6/" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors">
-                                <FaGithub size={22} />
+                                <FaGithub size={20} />
                             </a>
                             <a href="https://www.linkedin.com/in/mahmoud-hussein-0bb055242" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors text-blue-400/80">
-                                <FaLinkedin size={22} />
+                                <FaLinkedin size={20} />
                             </a>
                             <a href="https://wa.me/201288845234" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white transition-colors text-green-400/80">
-                                <FaWhatsapp size={22} />
+                                <FaWhatsapp size={20} />
                             </a>
                         </div>
                     </div>
 
                     {/* Mobile Menu Toggle */}
-                    <div className="sm:hidden flex flex-1 justify-end items-center">
+                    <div className="lg:hidden flex flex-1 justify-end items-center">
                         <div
                             className="w-[28px] h-[28px] cursor-pointer z-50 text-white hover:text-purple-400 transition-colors"
                             onClick={() => setToggle(!toggle)}

@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaCode, FaRocket, FaUserCheck, FaMicrochip, FaTerminal } from "react-icons/fa";
+import { PROJECTS_COUNT, EDUCATION } from "../../utils/data";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -113,7 +114,7 @@ const Summary = () => {
                                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-cyan-500/10 flex items-center justify-center mb-2 sm:mb-3">
                                         <FaCode className="text-lg sm:text-xl text-cyan-400" />
                                     </div>
-                                    <p className="text-xl sm:text-2xl font-black text-white">20+</p>
+                                    <p className="text-xl sm:text-2xl font-black text-white">{PROJECTS_COUNT}+</p>
                                     <p className="text-[7px] sm:text-[8px] text-slate-500 uppercase font-bold tracking-[0.2em] mt-1">Projects</p>
                                 </div>
                             </motion.div>
@@ -159,8 +160,8 @@ const Summary = () => {
                                     <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl sm:rounded-2xl bg-indigo-500/10 flex items-center justify-center mb-2 sm:mb-3">
                                         <FaUserCheck className="text-lg sm:text-xl text-indigo-400" />
                                     </div>
-                                    <p className="text-xl sm:text-2xl font-black text-white">3.6</p>
-                                    <p className="text-[7px] sm:text-[8px] text-slate-500 uppercase font-bold tracking-[0.2em] mt-1">Excellent GPA</p>
+                                    <p className="text-xl sm:text-2xl font-black text-white text-center">{EDUCATION.GPA}</p>
+                                    <p className="text-[7px] sm:text-[8px] text-slate-500 uppercase font-bold tracking-[0.2em] mt-1 text-center">Excellent GPA</p>
                                 </div>
                             </motion.div>
                         </div>
