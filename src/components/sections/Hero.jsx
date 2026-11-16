@@ -197,7 +197,7 @@ const Hero = () => {
 
 
                         <motion.a
-                            href="https://drive.google.com/file/d/1zcLz1J0v168kVXoCX6b9sVkhLnJMTtu0/view?usp=drive_link"
+                            href="https://drive.google.com/file/d/1MJ2kLP8wUmcB8WMqgZRCeVzOKlTpLSyv/view?usp=sharing"
                             target="_blank"
                             rel="noopener noreferrer"
                             whileHover={{ scale: 1.05, backgroundColor: "rgba(30, 41, 59, 0.8)" }}

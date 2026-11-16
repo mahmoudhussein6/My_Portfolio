@@ -67,7 +67,7 @@ export const ABOUT_TEXT = {
 
 export const CONTACT = {
     address: "Cairo , Egypt",
-    phoneNo: "+20 128 884 5234",
+    phoneNo: "+20 122 709 0520",
     email: "kottpkamal@gmail.com",
 };
 
