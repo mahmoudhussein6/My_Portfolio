@@ -1,4 +1,4 @@
-import { useRef, useState, memo } from "react";
+import { useRef } from "react";
 import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from "framer-motion";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
