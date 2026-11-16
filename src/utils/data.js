@@ -85,6 +85,11 @@ export const CERTIFICATIONS = [
         color: "#22c55e",
     },
     {
+        title: "Ischool Certification - Advanced Computer Science",
+        icon: FaBriefcase,
+        color: "#5468d6ff",
+    },
+    {
         title: "React – The Complete Guide (Udemy, 2025)",
         icon: FaReact,
         color: "#61DAFB",
@@ -170,6 +175,18 @@ export const featuredProjects = [
 ];
 
 export const experiences = [
+    {
+        title: "Programming Instructor",
+        company_name: "Ischool",
+        iconBg: "#383E56",
+        date: "Feb 2026 – Present",
+        points: [
+            "Contributing to the implementation of the Digital Egypt Marvels Initiative (DEMI & DECI), presented by the Ministry of Communications and Information Technology (MCIT) and implemented by iSchool.",
+            "Deliver coding and technology sessions for students.",
+            "Support students in developing programming and problem-solving skills.",
+            "Facilitate project-based and interactive learning experiences.",
+        ],
+    },
     {
         title: "Frontend Developer & Cross Platform Mobile Intern",
         company_name: "ITI",

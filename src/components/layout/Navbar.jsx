@@ -146,7 +146,7 @@ const Navbar = () => {
                                 <a href="https://www.linkedin.com/in/mahmoud-hussein-0bb055242" target="_blank" rel="noreferrer" className="text-blue-400/80">
                                     <FaLinkedin size={30} />
                                 </a>
-                                <a href="https://wa.me/201288845234" target="_blank" rel="noreferrer" className="text-green-400/80">
+                                <a href="https://wa.me/201227090520" target="_blank" rel="noreferrer" className="text-green-400/80">
                                     <FaWhatsapp size={30} />
                                 </a>
                             </div>

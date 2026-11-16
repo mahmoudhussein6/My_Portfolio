@@ -4,7 +4,7 @@ import { FaWhatsapp } from "react-icons/fa6";
 const WhatsAppFloating = () => {
     return (
         <motion.a
-            href="https://wa.me/201288845234"
+            href="https://wa.me/201227090520"
             target="_blank"
             rel="noreferrer"
             initial={{ scale: 0, opacity: 0 }}
